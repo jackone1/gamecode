@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
-import com.gct.gamecode.constant.MyConstant;
+import com.gct.gamecode.t1.constant.MyConstant;
 import com.gct.gamecode.util.MathUtil;
 
 /**

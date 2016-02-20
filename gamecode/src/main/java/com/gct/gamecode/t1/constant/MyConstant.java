@@ -1,4 +1,4 @@
-package com.gct.gamecode.constant;
+package com.gct.gamecode.t1.constant;
 
 import java.awt.Color;
 

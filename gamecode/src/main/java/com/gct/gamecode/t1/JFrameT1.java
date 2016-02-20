@@ -2,14 +2,13 @@ package com.gct.gamecode.t1;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.gct.gamecode.constant.MyConstant;
+import com.gct.gamecode.t1.constant.MyConstant;
 
 public class JFrameT1 extends JFrame {
 
