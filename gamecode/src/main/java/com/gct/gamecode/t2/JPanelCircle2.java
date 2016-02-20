@@ -1,4 +1,4 @@
-package com.gct.gamecode.t1;
+package com.gct.gamecode.t2;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
-import com.gct.gamecode.t1.constant.MyConstant;
+import com.gct.gamecode.t1.constant.MyConstant1;
 import com.gct.gamecode.util.MathUtil;
 
 /**
@@ -15,7 +15,7 @@ import com.gct.gamecode.util.MathUtil;
  * @author Administrator
  *
  */
-public class JPanelCircle extends JPanel implements KeyListener {
+public class JPanelCircle2 extends JPanel implements KeyListener {
 
 	/**
 	 * 
@@ -64,7 +64,7 @@ public class JPanelCircle extends JPanel implements KeyListener {
 	/**
 	 * Create the panel.
 	 */
-	public JPanelCircle() {
+	public JPanelCircle2() {
 	}
 
 	@Override
@@ -90,14 +90,14 @@ public class JPanelCircle extends JPanel implements KeyListener {
 		
 		oldClientWidth = oldClientWidth == null ? clientWidth : oldClientWidth;
 		oldClientHeight = oldClientHeight == null ? clientHeight : oldClientHeight;
-		circleWidth = circleWidth == null ? MyConstant.DEF_CIRCLE_WIDTH : circleWidth;
-		circleHeight = circleHeight == null ? MyConstant.DEF_CIRCLE_HEIGHT : circleHeight;
+		circleWidth = circleWidth == null ? MyConstant1.DEF_CIRCLE_WIDTH : circleWidth;
+		circleHeight = circleHeight == null ? MyConstant1.DEF_CIRCLE_HEIGHT : circleHeight;
 		x = (int) (x == null ? ((clientWidth - circleWidth) / 2) : x);
 		y = (int) (y == null ? ((clientHeight - circleHeight) / 2) : y);
-		stepX = stepX == null ? MyConstant.DEF_STEP_LEN_X : stepX;
-		stepY = stepY == null ? MyConstant.DEF_STEP_LEN_Y : stepY;
+		stepX = stepX == null ? MyConstant1.DEF_STEP_LEN_X : stepX;
+		stepY = stepY == null ? MyConstant1.DEF_STEP_LEN_Y : stepY;
 		
-		circleColor = MyConstant.DEF_CIRCLE_COLOR;
+		circleColor = MyConstant1.DEF_CIRCLE_COLOR;
 		
 		if (!clientWidth.equals(oldClientWidth)) {
 			circleWidth = Integer.parseInt(MathUtil.div(MathUtil.mul(clientWidth.toString(), circleWidth.toString()), oldClientWidth.toString(), 0));

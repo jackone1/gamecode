@@ -2,7 +2,7 @@ package com.gct.gamecode.t1.constant;
 
 import java.awt.Color;
 
-public interface MyConstant {
+public interface MyConstant1 {
 
 	/**
 	 * 默认窗口的X坐标
