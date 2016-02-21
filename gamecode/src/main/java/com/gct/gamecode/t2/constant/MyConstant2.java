@@ -40,4 +40,22 @@ public interface MyConstant2 {
 	 * 默认圆填充颜色
 	 */
 	Color DEF_CIRCLE_COLOR = new Color(0, 0, 255);
+	
+	
+	/**
+	 * 默认周围边界距离
+	 */
+	int DEF_AROUND_DISTANCE = 20;
+	/**
+	 * 默认横线数
+	 */
+	int DEF_HORIZONAL_NUM = 9;
+	/**
+	 * 默认竖线数
+	 */
+	int DEF_VERTICAL_NUM  = 9;
+	/**
+	 * 默认线条颜色
+	 */
+	Color DEF_LINE_COLOR = new Color(0, 0, 0);
 }

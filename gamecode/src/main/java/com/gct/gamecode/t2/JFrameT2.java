@@ -2,7 +2,6 @@ package com.gct.gamecode.t2;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,7 +13,7 @@ public class JFrameT2 extends JFrame {
 
 	private JPanel contentPane;
 	
-	private JPanel jpanelCircle11;
+	private JPanel jpanelGame;
 
 	/**
 	 * Launch the application.
@@ -43,14 +42,14 @@ public class JFrameT2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		jpanelCircle11 = new JPanelCircle2();
-		jpanelCircle11.setLayout(new BorderLayout(0, 0));
+		jpanelGame = new JPanelGame();
+		jpanelGame.setLayout(new BorderLayout(0, 0));
 		
-		contentPane.add(jpanelCircle11, BorderLayout.CENTER);
+		contentPane.add(jpanelGame, BorderLayout.CENTER);
 		
 		setContentPane(contentPane);
 		
-		this.addKeyListener((KeyListener) jpanelCircle11);
+//		this.addKeyListener((KeyListener) jpanelCircle11);
 	}
 
 }
