@@ -2,14 +2,20 @@ package com.gct.gamecode.t2;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import com.gct.gamecode.t1.constant.MyConstant1;
 
 public class JFrameT2 extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private JPanel contentPane;
 	
@@ -39,17 +45,18 @@ public class JFrameT2 extends JFrame {
 		setBounds(MyConstant1.DEF_FRAME_X, MyConstant1.DEF_FRAME_Y, MyConstant1.DEF_FRAME_WIDTH, MyConstant1.DEF_FRAME_HEIGHT);
 		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		jpanelGame = new JPanelGame();
-		jpanelGame.setLayout(new BorderLayout(0, 0));
 		
 		contentPane.add(jpanelGame, BorderLayout.CENTER);
 		
 		setContentPane(contentPane);
 		
 //		this.addKeyListener((KeyListener) jpanelCircle11);
+//		this.addMouseListener((MouseListener) jpanelGame);
+//		this.addMouseMotionListener((MouseMotionListener) jpanelGame);
 	}
 
 }

@@ -31,11 +31,11 @@ public interface MyConstant2 {
 	/**
 	 * 默认圆高度
 	 */
-	int DEF_CIRCLE_HEIGHT = 50;
+	int DEF_CIRCLE_HEIGHT = 30;
 	/**
 	 * 默认圆宽度
 	 */
-	int DEF_CIRCLE_WIDTH = 50;
+	int DEF_CIRCLE_WIDTH = 30;
 	/**
 	 * 默认圆填充颜色
 	 */
