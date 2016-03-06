@@ -15,7 +15,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import com.gct.gamecode.t2.constant.MyConstant2;
-import com.gct.gamecode.util.MathUtil;
+import com.gct.gamecode.util.MathUtil3;
 
 /**
  * 画圆
@@ -82,8 +82,8 @@ public class JPanelGame extends JPanel implements KeyListener, MouseListener, Mo
 		oldClientHeight = oldClientHeight == null ? clientHeight : oldClientHeight;
 //		zoomRateX = Double.valueOf(MathUtil.div(clientWidth.toString(), this.oldClientWidth.toString()));
 //		zoomRateY = Double.valueOf(MathUtil.div(clientHeight.toString(), this.oldClientHeight.toString()));
-		zoomRateX = Double.valueOf(MathUtil.div(clientWidth.toString(), String.valueOf(MyConstant2.DEF_FRAME_WIDTH)));
-		zoomRateY = Double.valueOf(MathUtil.div(clientHeight.toString(), String.valueOf(MyConstant2.DEF_FRAME_HEIGHT)));
+		zoomRateX = Double.valueOf(MathUtil3.div(clientWidth.toString(), String.valueOf(MyConstant2.DEF_FRAME_WIDTH)));
+		zoomRateY = Double.valueOf(MathUtil3.div(clientHeight.toString(), String.valueOf(MyConstant2.DEF_FRAME_HEIGHT)));
 		
 		if (this.getWidth() != this.oldClientWidth) {
 			this.oldClientWidth = this.getWidth();

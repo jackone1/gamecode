@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import com.gct.gamecode.t2.constant.MyConstant2;
-import com.gct.gamecode.util.MathUtil;
+import com.gct.gamecode.util.MathUtil3;
 
 /**
  * 画圆
@@ -87,13 +87,13 @@ public class MyCircle2 implements KeyListener {
 		Integer defClientWidth = MyConstant2.DEF_FRAME_WIDTH;
 		Integer defClientHeight = MyConstant2.DEF_FRAME_HEIGHT;
 		
-		circleWidth = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateX().toString(), String.valueOf(MyConstant2.DEF_CIRCLE_WIDTH)), 0));
-		x = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateX().toString(), initX.toString()), 0));
-		stepX = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateX().toString(), String.valueOf(MyConstant2.DEF_STEP_LEN_X)), 0));
+		circleWidth = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateX().toString(), String.valueOf(MyConstant2.DEF_CIRCLE_WIDTH)), 0));
+		x = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateX().toString(), initX.toString()), 0));
+		stepX = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateX().toString(), String.valueOf(MyConstant2.DEF_STEP_LEN_X)), 0));
 		
-		circleHeight = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateY().toString(), String.valueOf(MyConstant2.DEF_CIRCLE_HEIGHT)), 0));
-		y = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateY().toString(), initY.toString()), 0));
-		stepY = Integer.parseInt(MathUtil.round(MathUtil.mul(parentPanel.getZoomRateY().toString(), String.valueOf(MyConstant2.DEF_STEP_LEN_Y)), 0));
+		circleHeight = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateY().toString(), String.valueOf(MyConstant2.DEF_CIRCLE_HEIGHT)), 0));
+		y = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateY().toString(), initY.toString()), 0));
+		stepY = Integer.parseInt(MathUtil3.round(MathUtil3.mul(parentPanel.getZoomRateY().toString(), String.valueOf(MyConstant2.DEF_STEP_LEN_Y)), 0));
 
 		circleColor = MyConstant2.DEF_CIRCLE_COLOR;
 	}

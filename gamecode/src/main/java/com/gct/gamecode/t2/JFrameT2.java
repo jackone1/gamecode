@@ -2,13 +2,11 @@ package com.gct.gamecode.t2;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.gct.gamecode.t1.constant.MyConstant1;
+import com.gct.gamecode.t2.constant.MyConstant2;
 
 public class JFrameT2 extends JFrame {
 
@@ -42,7 +40,7 @@ public class JFrameT2 extends JFrame {
 	 */
 	public JFrameT2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(MyConstant1.DEF_FRAME_X, MyConstant1.DEF_FRAME_Y, MyConstant1.DEF_FRAME_WIDTH, MyConstant1.DEF_FRAME_HEIGHT);
+		setBounds(MyConstant2.DEF_FRAME_X, MyConstant2.DEF_FRAME_Y, MyConstant2.DEF_FRAME_WIDTH, MyConstant2.DEF_FRAME_HEIGHT);
 		
 		contentPane = new JPanel();
 //		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

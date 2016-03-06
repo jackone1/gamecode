@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 import com.gct.gamecode.t1.constant.MyConstant1;
-import com.gct.gamecode.util.MathUtil;
+import com.gct.gamecode.util.MathUtil3;
 
 /**
  * 画圆
@@ -100,17 +100,17 @@ public class JPanelCircle1 extends JPanel implements KeyListener {
 		circleColor = MyConstant1.DEF_CIRCLE_COLOR;
 		
 		if (!clientWidth.equals(oldClientWidth)) {
-			circleWidth = Integer.parseInt(MathUtil.div(MathUtil.mul(clientWidth.toString(), circleWidth.toString()), oldClientWidth.toString(), 0));
-			x = Integer.parseInt(MathUtil.div(MathUtil.mul(clientWidth.toString(), x.toString()), oldClientWidth.toString(), 0));
-			stepX = Integer.parseInt(MathUtil.div(MathUtil.mul(clientWidth.toString(), stepX.toString()), oldClientWidth.toString(), 0));
+			circleWidth = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientWidth.toString(), circleWidth.toString()), oldClientWidth.toString(), 0));
+			x = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientWidth.toString(), x.toString()), oldClientWidth.toString(), 0));
+			stepX = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientWidth.toString(), stepX.toString()), oldClientWidth.toString(), 0));
 			
 			oldClientWidth = clientWidth;
 		}
 		
 		if (!clientHeight.equals(oldClientHeight)) {
-			circleHeight = Integer.parseInt(MathUtil.div(MathUtil.mul(clientHeight.toString(), circleHeight.toString()), oldClientHeight.toString(), 0));
-			y = Integer.parseInt(MathUtil.div(MathUtil.mul(clientHeight.toString(), y.toString()), oldClientHeight.toString(), 0));
-			stepY = Integer.parseInt(MathUtil.div(MathUtil.mul(clientHeight.toString(), stepY.toString()), oldClientHeight.toString(), 0));
+			circleHeight = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientHeight.toString(), circleHeight.toString()), oldClientHeight.toString(), 0));
+			y = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientHeight.toString(), y.toString()), oldClientHeight.toString(), 0));
+			stepY = Integer.parseInt(MathUtil3.div(MathUtil3.mul(clientHeight.toString(), stepY.toString()), oldClientHeight.toString(), 0));
 			
 			oldClientHeight = clientHeight;
 		}
