@@ -26,6 +26,10 @@ public interface MyConstant3 {
 	 */
 	Color DEF_CIRCLE_COLOR = new Color(0, 0, 255);
 	
+	/**
+	 * 棋盘颜色
+	 */
+	Color DEF_PANEL_COLOR = new Color(249, 214, 91);
 	
 	/**
 	 * 默认周围边界距离

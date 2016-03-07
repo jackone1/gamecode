@@ -44,6 +44,24 @@ public class MyCircle3 {
 		this.circleColor = circleColor;
 	}
 
+	/**
+	 * 是否为相同的圆心
+	 * @param ptCenter 圆心
+	 * @return
+	 */
+	public boolean isSamePointCenter(Point ptCenter) {
+		return this.ptCenter.equals(ptCenter);
+	}
+	
+	/**
+	 * 是否相同的颜色
+	 * @param otherColor
+	 * @return
+	 */
+	public boolean isSameColor(Color otherColor) {
+		return this.getCircleColor().equals(otherColor);
+	}
+	
 	public void paint(Graphics g) {
 		Color oldColor = g.getColor();
 		g.setColor(circleColor);

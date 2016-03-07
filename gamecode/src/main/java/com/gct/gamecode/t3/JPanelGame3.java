@@ -6,13 +6,18 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
 import com.gct.gamecode.t3.constant.MyConstant3;
-import com.gct.gamecode.util.MathUtil3;
+import com.gct.gamecode.t3.listener.Drawerable;
+import com.gct.gamecode.t3.listener.impl.BlackDrawer;
+import com.gct.gamecode.t3.listener.impl.DrawerSwitcherImpl;
+import com.gct.gamecode.t3.listener.impl.WhiteDrawer;
 
 /**
  * 棋板
@@ -23,6 +28,8 @@ public class JPanelGame3 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
+	/** 棋盘的颜色 */
+	private Color panelColor = MyConstant3.DEF_PANEL_COLOR;
 	/** 线的颜色 */
 	private Color lineColor = MyConstant3.DEF_LINE_COLOR;
 	/** 周围边界距离 */
@@ -37,15 +44,26 @@ public class JPanelGame3 extends JPanel {
 	/** 竖线间距 */
 	private int vLineDistance;
 	
+//	private List<MyCircle3> circleAry;
+	/** key:位置坐标(x+y), value:circle*/
+	private Map<String, MyCircle3> circleMap;
 	
-	private List<MyCircle3> circleAry;
+	private Drawerable drawer;
 	
 	/**
 	 * Create the panel.
 	 */
 	public JPanelGame3() {
-		circleAry = new ArrayList<MyCircle3>();
+//		circleAry = new ArrayList<MyCircle3>();
+		circleMap = new HashMap<String, MyCircle3>();
+		
+		BlackDrawer black = new BlackDrawer();
+		WhiteDrawer white = new WhiteDrawer();
+		Drawerable first = black;
+		drawer = new DrawerSwitcherImpl(first, white, black);
+		
 		this.setLayout(new BorderLayout(0, 0));
+		this.setBackground(panelColor);
 
 		this.addMouseListener(new MyMouseAdapter());
 		this.addMouseMotionListener(new MyMouseAdapter());
@@ -57,14 +75,9 @@ public class JPanelGame3 extends JPanel {
 		
 		init();
 		
-		Color oldColor = g.getColor();
-		
-		g.setColor(lineColor);
 		drawHorizonalLine(g);
 		drawVerticalLine(g);
 		drawMyCircle(g);
-		
-		g.setColor(oldColor);
 	}
 
 	private void init() {
@@ -85,8 +98,9 @@ public class JPanelGame3 extends JPanel {
 	 * @param g
 	 */
 	public void drawMyCircle(Graphics g) {
-		for (int i = 0; i < circleAry.size(); i++) {
-			MyCircle3 myCircle3 = circleAry.get(i);
+		Collection<MyCircle3> values = circleMap.values();
+		for (Iterator iterator = values.iterator(); iterator.hasNext();) {
+			MyCircle3 myCircle3 = (MyCircle3) iterator.next();
 			myCircle3.paint(g);
 		}
 	}
@@ -96,6 +110,9 @@ public class JPanelGame3 extends JPanel {
 	 * @param g
 	 */
 	public void drawHorizonalLine(Graphics g) {
+		Color oldColor = g.getColor();
+		g.setColor(lineColor);
+		
 		int headPointX = this.aroundDistance;
 		int nextHeadPointY = this.aroundDistance;
 		int tailPointX = this.aroundDistance + (this.horizonalNum - 1) * vLineDistance;
@@ -103,6 +120,8 @@ public class JPanelGame3 extends JPanel {
 		for (int i = 0; i < this.horizonalNum; i++) {
 			g.drawLine(headPointX, (nextHeadPointY + i * hLineDistance), tailPointX, (nextTailPointY + i * hLineDistance));
 		}
+		
+		g.setColor(oldColor);
 	}
 	
 	/**
@@ -110,6 +129,9 @@ public class JPanelGame3 extends JPanel {
 	 * @param g
 	 */
 	public void drawVerticalLine(Graphics g) {
+		Color oldColor = g.getColor();
+		g.setColor(lineColor);
+		
 		int headPointY = this.aroundDistance;
 		int nextHeadPointX = this.aroundDistance;
 		int tailPointY = this.aroundDistance + (this.verticalNum - 1) * hLineDistance;
@@ -117,6 +139,8 @@ public class JPanelGame3 extends JPanel {
 		for (int i = 0; i < this.verticalNum; i++) {
 			g.drawLine((nextHeadPointX + i * vLineDistance), headPointY, (nextTailPointX + i * vLineDistance), tailPointY);
 		}
+
+		g.setColor(oldColor);
 	}
 
 	class MyMouseAdapter extends MouseAdapter {
@@ -126,49 +150,75 @@ public class JPanelGame3 extends JPanel {
 			super.mouseMoved(e);
 
 			Point mousePoint = e.getPoint();
-			System.out.println("mouse point(" + mousePoint.x + "," + mousePoint.y + ")");
+//			System.out.println("current mouse point(" + mousePoint.x + "," + mousePoint.y + ")");
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			super.mouseReleased(e);
 			
-			Point mousePoint = e.getPoint();
-			if (isPointOverBound(mousePoint)) {
-				return;
-			}
-			
-			//计算圆心坐标
-			int ptX = mousePoint.x / vLineDistance * vLineDistance + aroundDistance;
-			int ptY = mousePoint.y / hLineDistance * hLineDistance + aroundDistance;
-			System.out.println("add new circle(ptX:" + ptX + ", ptY:" + ptY + ")");
-			
-			//计算直径
-			int shortDistance = vLineDistance > hLineDistance ? hLineDistance : vLineDistance;
-			int intDiameter = Integer.valueOf(MathUtil3.div(String.valueOf(shortDistance), String.valueOf(1.618), 0));
-			Color color = MyConstant3.DEF_CIRCLE_COLOR;
-			
-			JPanelGame3.this.circleAry.add(new MyCircle3(new Point(ptX, ptY), intDiameter, color));
-			JPanelGame3.this.repaint();
-		}
-		
-		/**
-		 * 是否超过边界线
-		 * @param point
-		 * @return
-		 */
-		private boolean isPointOverBound(Point point) {
-			if (point.x < aroundDistance || point.x > ((verticalNum - 1) * vLineDistance + aroundDistance)) {
-				System.out.println("x 超过边界线");
-				return true;
-			}
-			
-			if (point.y < aroundDistance || point.y > ((horizonalNum - 1) * hLineDistance + aroundDistance)) {
-				System.out.println("y 超过边界线");
-				return true;
-			}
-			
-			return false;
+			drawer.draw(JPanelGame3.this, e.getPoint());
 		}
 	}
+
+	public Color getLineColor() {
+		return lineColor;
+	}
+
+	public void setLineColor(Color lineColor) {
+		this.lineColor = lineColor;
+	}
+
+	public int getAroundDistance() {
+		return aroundDistance;
+	}
+
+	public void setAroundDistance(int aroundDistance) {
+		this.aroundDistance = aroundDistance;
+	}
+
+	public int getVerticalNum() {
+		return verticalNum;
+	}
+
+	public void setVerticalNum(int verticalNum) {
+		this.verticalNum = verticalNum;
+	}
+
+	public int getHorizonalNum() {
+		return horizonalNum;
+	}
+
+	public void setHorizonalNum(int horizonalNum) {
+		this.horizonalNum = horizonalNum;
+	}
+
+	public int gethLineDistance() {
+		return hLineDistance;
+	}
+
+	public void sethLineDistance(int hLineDistance) {
+		this.hLineDistance = hLineDistance;
+	}
+
+	public int getvLineDistance() {
+		return vLineDistance;
+	}
+
+	public void setvLineDistance(int vLineDistance) {
+		this.vLineDistance = vLineDistance;
+	}
+
+	public Map<String, MyCircle3> getCircleMap() {
+		return circleMap;
+	}
+
+	public void addCircle(String key, MyCircle3 value) {
+		this.getCircleMap().put(key, value);
+	}
+	
+	public void setCircleMap(Map<String, MyCircle3> circleMap) {
+		this.circleMap = circleMap;
+	}
+	
 }
