@@ -10,6 +10,15 @@ public interface Drawerable {
 	 * 绘制
 	 * @param source
 	 * @param mousePoint
+	 * @return TODO
 	 */
-	public void draw(JPanelGame3 source, Point mousePoint);
+	public boolean draw(JPanelGame3 source, Point mousePoint);
+	
+	/**
+	 * 随mouse移动绘制
+	 * @param source
+	 * @param mousePoint
+	 * @return TODO
+	 */
+	public boolean drawFollowMouse(JPanelGame3 source, Point mousePoint);
 }

@@ -45,9 +45,17 @@ public class DrawerSwitcherImpl implements Drawerable {
 	/**
 	 * 绘制之后，切换绘制者
 	 */
-	public void draw(JPanelGame3 source, Point mousePoint) {
-		current.draw(source, mousePoint);
-		toggle();
+	public boolean draw(JPanelGame3 source, Point mousePoint) {
+		boolean draw = current.draw(source, mousePoint);
+		if (draw) {
+			toggle();
+		}
+		return draw;
+	}
+
+	public boolean drawFollowMouse(JPanelGame3 source, Point mousePoint) {
+		current.drawFollowMouse(source, mousePoint);
+		return false;
 	}
 
 }

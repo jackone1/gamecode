@@ -14,9 +14,9 @@ import com.gct.gamecode.util.MathUtil3;
 
 public abstract class AbsMyDrawerImpl implements Drawerable {
 
-	public void draw(JPanelGame3 source, Point mousePoint) {
+	public boolean draw(JPanelGame3 source, Point mousePoint) {
 		if (isPointOverBound(source, mousePoint)) {
-			return;
+			return false;
 		}
 
 		//计算圆心坐标
@@ -27,7 +27,7 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 		Point point = new Point(ptX, ptY);
 		boolean hasCircle = hasCircle(source, point);
 		if (hasCircle) {
-			return;
+			return false;
 		}
 		
 		//计算直径
@@ -42,6 +42,30 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 		
 		eatCircle(source, myCircle3);
 		source.repaint();
+		return true;
+	}
+	
+	public boolean drawFollowMouse(JPanelGame3 source, Point mousePoint) {
+		//计算圆心坐标
+		int ptX = mousePoint.x;
+		int ptY = mousePoint.y;
+		System.out.println("add new circle(ptX:" + ptX + ", ptY:" + ptY + ")");
+		
+		//计算直径
+		int shortDistance = source.getvLineDistance() > source.gethLineDistance() ? source.gethLineDistance() : source.getvLineDistance();
+		int intDiameter = Integer.valueOf(MathUtil3.div(String.valueOf(shortDistance), String.valueOf(1.618), 0));
+		Point point = new Point(ptX, ptY);
+		MyCircle3 myCircle3 = source.getMouseCircle3();
+		if (myCircle3 == null) {
+			myCircle3 = new MyCircle3(point, intDiameter, this.getMyColor());
+			source.setMouseCircle3(myCircle3);
+		}
+		
+		myCircle3.setPtCenter(point);
+		myCircle3.setCircleColor(getMyColor());
+
+		source.repaint();
+		return false;
 	}
 	
 	private void eatCircle(JPanelGame3 source, MyCircle3 myCircle3) {
@@ -55,10 +79,10 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 		needEatedList.addAll(findHeadAndTailWithDrDownLeft(source, myCircle3));
 		needEatedList.addAll(findHeadAndTailWithDrDownRight(source, myCircle3));
 		
-		changeMyColor(needEatedList);
+		change2MyColor(needEatedList);
 	}
 	
-	private void changeMyColor(List<MyCircle3> needEatedList) {
+	private void change2MyColor(List<MyCircle3> needEatedList) {
 		if (needEatedList == null || needEatedList.isEmpty()) {
 			return;
 		}
@@ -415,4 +439,5 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 	}
 	
 	protected abstract void drawIntenal(JPanelGame3 source, MyCircle3 myCircle3);
+
 }

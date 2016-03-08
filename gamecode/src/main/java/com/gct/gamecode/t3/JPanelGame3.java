@@ -2,6 +2,7 @@ package com.gct.gamecode.t3;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -47,6 +48,7 @@ public class JPanelGame3 extends JPanel {
 //	private List<MyCircle3> circleAry;
 	/** key:位置坐标(x+y), value:circle*/
 	private Map<String, MyCircle3> circleMap;
+	private MyCircle3 mouseCircle3;
 	
 	private Drawerable drawer;
 	
@@ -61,6 +63,8 @@ public class JPanelGame3 extends JPanel {
 		WhiteDrawer white = new WhiteDrawer();
 		Drawerable first = black;
 		drawer = new DrawerSwitcherImpl(first, white, black);
+		
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		this.setLayout(new BorderLayout(0, 0));
 		this.setBackground(panelColor);
@@ -78,6 +82,10 @@ public class JPanelGame3 extends JPanel {
 		drawHorizonalLine(g);
 		drawVerticalLine(g);
 		drawMyCircle(g);
+		
+		if (mouseCircle3 != null) {
+			mouseCircle3.paint(g);
+		}
 	}
 
 	private void init() {
@@ -151,6 +159,8 @@ public class JPanelGame3 extends JPanel {
 
 			Point mousePoint = e.getPoint();
 //			System.out.println("current mouse point(" + mousePoint.x + "," + mousePoint.y + ")");
+			
+			drawer.drawFollowMouse(JPanelGame3.this, mousePoint);
 		}
 
 		@Override
@@ -219,6 +229,30 @@ public class JPanelGame3 extends JPanel {
 	
 	public void setCircleMap(Map<String, MyCircle3> circleMap) {
 		this.circleMap = circleMap;
+	}
+
+	public Color getPanelColor() {
+		return panelColor;
+	}
+
+	public void setPanelColor(Color panelColor) {
+		this.panelColor = panelColor;
+	}
+
+	public MyCircle3 getMouseCircle3() {
+		return mouseCircle3;
+	}
+
+	public void setMouseCircle3(MyCircle3 mouseCircle3) {
+		this.mouseCircle3 = mouseCircle3;
+	}
+
+	public Drawerable getDrawer() {
+		return drawer;
+	}
+
+	public void setDrawer(Drawerable drawer) {
+		this.drawer = drawer;
 	}
 	
 }

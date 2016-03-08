@@ -62,6 +62,15 @@ public class MyCircle3 {
 		return this.getCircleColor().equals(otherColor);
 	}
 	
+	/**
+	 * 实现渐变
+	 * @param targetColor
+	 * @param g
+	 */
+	public void changeColor(Color targetColor, Graphics g) {
+		//
+	}
+	
 	public void paint(Graphics g) {
 		Color oldColor = g.getColor();
 		g.setColor(circleColor);
