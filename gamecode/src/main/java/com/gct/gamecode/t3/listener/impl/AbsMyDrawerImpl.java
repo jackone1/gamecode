@@ -49,7 +49,6 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 		//计算圆心坐标
 		int ptX = mousePoint.x;
 		int ptY = mousePoint.y;
-		System.out.println("add new circle(ptX:" + ptX + ", ptY:" + ptY + ")");
 		
 		//计算直径
 		int shortDistance = source.getvLineDistance() > source.gethLineDistance() ? source.gethLineDistance() : source.getvLineDistance();
