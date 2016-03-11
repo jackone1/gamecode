@@ -164,8 +164,8 @@ public class JPanelGame3 extends JPanel {
 		}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {
-			super.mouseReleased(e);
+		public void mouseClicked(MouseEvent e) {
+			super.mouseClicked(e);
 			
 			drawer.draw(JPanelGame3.this, e.getPoint());
 		}
