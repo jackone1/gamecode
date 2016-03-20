@@ -1,4 +1,4 @@
-package com.gct.gamecode.t3;
+package com.gct.gamecode.t4;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -14,11 +14,11 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
-import com.gct.gamecode.t3.constant.MyConstant3;
-import com.gct.gamecode.t3.listener.Drawerable;
-import com.gct.gamecode.t3.listener.impl.BlackDrawer;
-import com.gct.gamecode.t3.listener.impl.DrawerSwitcherImpl;
-import com.gct.gamecode.t3.listener.impl.WhiteDrawer;
+import com.gct.gamecode.t4.constant.MyConstant4;
+import com.gct.gamecode.t4.listener.Drawerable;
+import com.gct.gamecode.t4.listener.impl.BlackDrawer;
+import com.gct.gamecode.t4.listener.impl.DrawerSwitcherImpl;
+import com.gct.gamecode.t4.listener.impl.WhiteDrawer;
 import com.gct.gamecode.util.MathUtil3;
 
 /**
@@ -26,39 +26,39 @@ import com.gct.gamecode.util.MathUtil3;
  * @author Administrator
  *
  */
-public class JPanelGame3 extends JPanel {
+public class JPanelGame4 extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
 	/** 棋盘的颜色 */
-	private Color panelColor = MyConstant3.DEF_PANEL_COLOR;
+	private Color panelColor = MyConstant4.DEF_PANEL_COLOR;
 	/** 线的颜色 */
-	private Color lineColor = MyConstant3.DEF_LINE_COLOR;
+	private Color lineColor = MyConstant4.DEF_LINE_COLOR;
 	/** 周围边界距离 */
-	private int aroundDistance = MyConstant3.DEF_AROUND_DISTANCE;
+	private int aroundDistance = MyConstant4.DEF_AROUND_DISTANCE;
 	/** 竖线数 */
-	private int verticalNum = MyConstant3.DEF_VERTICAL_NUM;
+	private int verticalNum = MyConstant4.DEF_VERTICAL_NUM;
 	/** 横线数 */
-	private int horizonalNum = MyConstant3.DEF_HORIZONAL_NUM ;
+	private int horizonalNum = MyConstant4.DEF_HORIZONAL_NUM ;
 	
 	/** 横线间距 */
 	private int hLineDistance;
 	/** 竖线间距 */
 	private int vLineDistance;
 	
-//	private List<MyCircle3> circleAry;
+//	private List<MyCircle4> circleAry;
 	/** key:位置坐标(x+y), value:circle*/
-	private Map<String, MyCircle3> circleMap;
-	private MyCircle3 mouseCircle3;
+	private Map<String, MyCircle4> circleMap;
+	private MyCircle4 mouseCircle4;
 	
 	private Drawerable drawer;
 	
 	/**
 	 * Create the panel.
 	 */
-	public JPanelGame3() {
-//		circleAry = new ArrayList<MyCircle3>();
-		circleMap = new HashMap<String, MyCircle3>();
+	public JPanelGame4() {
+//		circleAry = new ArrayList<MyCircle4>();
+		circleMap = new HashMap<String, MyCircle4>();
 		
 		BlackDrawer black = new BlackDrawer();
 		WhiteDrawer white = new WhiteDrawer();
@@ -84,22 +84,22 @@ public class JPanelGame3 extends JPanel {
 		drawVerticalLine(g);
 		drawMyCircle(g);
 		
-		if (mouseCircle3 != null) {
-			mouseCircle3.paint(g);
+		if (mouseCircle4 != null) {
+			mouseCircle4.paint(g);
 		}
 	}
 
 	private void init() {
 		if (hLineDistance == 0) {
 			int height2 = this.getHeight();
-			hLineDistance = (height2 - this.aroundDistance * 2) / (this.horizonalNum - 1);
-//			hLineDistance = Integer.valueOf(MathUtil3.div(String.valueOf((height2 - this.aroundDistance * 2)), String.valueOf((this.horizonalNum - 1)), 0));
+//			hLineDistance = (height2 - this.aroundDistance * 2) / (this.horizonalNum - 1);
+			hLineDistance = Integer.valueOf(MathUtil3.div(String.valueOf((height2 - this.aroundDistance * 2)), String.valueOf((this.horizonalNum - 1)), 0));
 		}
 		
 		if (vLineDistance == 0) {
 			int width2 = this.getWidth();
-			vLineDistance = (width2 - this.aroundDistance * 2) / (this.verticalNum - 1);
-//			vLineDistance = Integer.valueOf(MathUtil3.div(String.valueOf((width2 - this.aroundDistance * 2)), String.valueOf(this.verticalNum - 1), 0));
+//			vLineDistance = (width2 - this.aroundDistance * 2) / (this.verticalNum - 1);
+			vLineDistance = Integer.valueOf(MathUtil3.div(String.valueOf((width2 - this.aroundDistance * 2)),String.valueOf(this.verticalNum - 1), 0));
 		}
 	}
 
@@ -108,10 +108,10 @@ public class JPanelGame3 extends JPanel {
 	 * @param g
 	 */
 	public void drawMyCircle(Graphics g) {
-		Collection<MyCircle3> values = circleMap.values();
+		Collection<MyCircle4> values = circleMap.values();
 		for (Iterator iterator = values.iterator(); iterator.hasNext();) {
-			MyCircle3 myCircle3 = (MyCircle3) iterator.next();
-			myCircle3.paint(g);
+			MyCircle4 myCircle4 = (MyCircle4) iterator.next();
+			myCircle4.paint(g);
 		}
 	}
 	
@@ -160,16 +160,17 @@ public class JPanelGame3 extends JPanel {
 			super.mouseMoved(e);
 
 			Point mousePoint = e.getPoint();
-			System.out.println("current mouse point(" + mousePoint.x + "," + mousePoint.y + ")");
+//			System.out.println("current mouse point(" + mousePoint.x + "," + mousePoint.y + ")");
 			
-			drawer.drawFollowMouse(JPanelGame3.this, mousePoint);
+			drawer.drawFollowMouse(JPanelGame4.this, mousePoint);
 		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			super.mouseClicked(e);
 			
-			drawer.draw(JPanelGame3.this, e.getPoint());
+			System.out.println("mouseClicked...");
+			drawer.draw(JPanelGame4.this, e.getPoint());
 		}
 	}
 
@@ -221,15 +222,15 @@ public class JPanelGame3 extends JPanel {
 		this.vLineDistance = vLineDistance;
 	}
 
-	public Map<String, MyCircle3> getCircleMap() {
+	public Map<String, MyCircle4> getCircleMap() {
 		return circleMap;
 	}
 
-	public void addCircle(String key, MyCircle3 value) {
+	public void addCircle(String key, MyCircle4 value) {
 		this.getCircleMap().put(key, value);
 	}
 	
-	public void setCircleMap(Map<String, MyCircle3> circleMap) {
+	public void setCircleMap(Map<String, MyCircle4> circleMap) {
 		this.circleMap = circleMap;
 	}
 
@@ -241,12 +242,12 @@ public class JPanelGame3 extends JPanel {
 		this.panelColor = panelColor;
 	}
 
-	public MyCircle3 getMouseCircle3() {
-		return mouseCircle3;
+	public MyCircle4 getMouseCircle4() {
+		return mouseCircle4;
 	}
 
-	public void setMouseCircle3(MyCircle3 mouseCircle3) {
-		this.mouseCircle3 = mouseCircle3;
+	public void setMouseCircle4(MyCircle4 mouseCircle4) {
+		this.mouseCircle4 = mouseCircle4;
 	}
 
 	public Drawerable getDrawer() {

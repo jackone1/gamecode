@@ -92,6 +92,16 @@ public class MathUtil3 {
 	}
 
 	/**
+	 * ROUND_UP
+	 * @return
+	 */
+	public static int divRoundUp(int v1, int v2) {
+		BigDecimal b1 = new BigDecimal(v1);
+		BigDecimal b2 = new BigDecimal(v2);
+		return b1.divide(b2, BigDecimal.ROUND_UP).intValue();
+	}
+	
+	/**
 	 * 提供精确的小数位四舍五入处理。
 	 *
 	 * @param v
@@ -109,4 +119,5 @@ public class MathUtil3 {
 		BigDecimal one = new BigDecimal("1");
 		return String.valueOf(b.divide(one, scale, BigDecimal.ROUND_HALF_UP));
 	}
+	
 }

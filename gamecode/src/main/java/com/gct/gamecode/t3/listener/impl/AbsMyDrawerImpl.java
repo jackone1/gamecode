@@ -20,8 +20,13 @@ public abstract class AbsMyDrawerImpl implements Drawerable {
 		}
 
 		//计算圆心坐标
-		int ptX = mousePoint.x / source.getvLineDistance() * source.getvLineDistance() + source.getAroundDistance();
-		int ptY = mousePoint.y / source.gethLineDistance() * source.gethLineDistance() + source.getAroundDistance();
+//		int ptX = (mousePoint.x - source.getAroundDistance()) / source.getvLineDistance() * source.getvLineDistance() + source.getAroundDistance();
+//		int ptY = (mousePoint.y - source.getAroundDistance()) / source.gethLineDistance() * source.gethLineDistance() + source.getAroundDistance();
+		Integer aroundDistance = source.getAroundDistance();
+		int ptX = Integer.valueOf(MathUtil3.mul(MathUtil3.div(String.valueOf(mousePoint.x - aroundDistance), String.valueOf(source.getvLineDistance()), 0), String.valueOf(source.getvLineDistance()))) + aroundDistance;
+		int ptY = Integer.valueOf(MathUtil3.mul(MathUtil3.div(String.valueOf(mousePoint.y - aroundDistance), String.valueOf(source.gethLineDistance()), 0), String.valueOf(source.gethLineDistance()))) + aroundDistance;
+		System.out.println(String.format("ptX:%s/%s*%s", mousePoint.x, source.getvLineDistance(), source.getvLineDistance()));
+		System.out.println(String.format("ptY:%s/%s*%s", mousePoint.y, source.gethLineDistance(), source.gethLineDistance()));
 		System.out.println("add new circle(ptX:" + ptX + ", ptY:" + ptY + ")");
 		
 		Point point = new Point(ptX, ptY);
