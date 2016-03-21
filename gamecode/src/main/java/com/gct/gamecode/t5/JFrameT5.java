@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.gct.gamecode.t5.constant.MyConstant5;
+import com.gct.gamecode.t5.util.ImgUtils;
 
 public class JFrameT5 extends JFrame {
 
@@ -34,6 +35,8 @@ public class JFrameT5 extends JFrame {
 				}
 			}
 		});
+		
+		ImgUtils.getImgByFileName("");//loading img
 	}
 
 	/**

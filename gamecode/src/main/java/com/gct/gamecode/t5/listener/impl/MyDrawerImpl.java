@@ -5,8 +5,10 @@ import java.awt.Point;
 import com.gct.gamecode.t5.JPanelGame5;
 import com.gct.gamecode.t5.compent.factory.MyCompentFactory;
 import com.gct.gamecode.t5.compent.factory.impl.MyCompentFactoryImpl;
+import com.gct.gamecode.t5.compent.impl.MyFrag;
 import com.gct.gamecode.t5.compent.impl.MyNumber;
 import com.gct.gamecode.t5.listener.Drawerable;
+import com.gct.gamecode.t5.util.ImgUtils;
 import com.gct.gamecode.util.MathUtil3;
 
 public class MyDrawerImpl implements Drawerable {
@@ -41,11 +43,54 @@ public class MyDrawerImpl implements Drawerable {
 		int shortDistance = source.getvLineDistance() > source.gethLineDistance() ? source.gethLineDistance() : source.getvLineDistance();
 		int intDiameter = Integer.valueOf(MathUtil3.div(String.valueOf(shortDistance), String.valueOf(1.618), 0));
 		
-		MyNumber myNumber = compentFactory.getMyNumber(8, point, intDiameter);
-		source.addMyCompent(myNumber);
+//		showAllNumbers(source, ptY, point, intDiameter);
+		
+		MyFrag frag = new MyFrag(point, intDiameter);
+		source.addMyCompent(frag);
 		
 		source.repaint();
 		return true;
+	}
+
+	/**
+	 * @param source
+	 * @param ptY
+	 * @param point
+	 * @param intDiameter
+	 */
+	private void showAllNumbers(JPanelGame5 source, int ptY, Point point,
+			int intDiameter) {
+		MyNumber myNumber = compentFactory.getMyNumber(1, point, intDiameter);
+		
+		Point point2 = new Point(point.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber2 = compentFactory.getMyNumber(2, point2, intDiameter);
+		
+		Point point3 = new Point(point2.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber3 = compentFactory.getMyNumber(3, point3, intDiameter);
+		
+		Point point4 = new Point(point3.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber4 = compentFactory.getMyNumber(4, point4, intDiameter);
+		
+		Point point5 = new Point(point4.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber5 = compentFactory.getMyNumber(5, point5, intDiameter);
+		
+		Point point6 = new Point(point5.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber6 = compentFactory.getMyNumber(6, point6, intDiameter);
+		
+		Point point7 = new Point(point6.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber7 = compentFactory.getMyNumber(7, point7, intDiameter);
+		
+		Point point8 = new Point(point7.x + source.getvLineDistance(), ptY);
+		MyNumber myNumber8 = compentFactory.getMyNumber(8, point8, intDiameter);
+		
+		source.addMyCompent(myNumber);
+		source.addMyCompent(myNumber2);
+		source.addMyCompent(myNumber3);
+		source.addMyCompent(myNumber4);
+		source.addMyCompent(myNumber5);
+		source.addMyCompent(myNumber6);
+		source.addMyCompent(myNumber7);
+		source.addMyCompent(myNumber8);
 	}
 	
 	public boolean drawFollowMouse(JPanelGame5 source, Point mousePoint) {
