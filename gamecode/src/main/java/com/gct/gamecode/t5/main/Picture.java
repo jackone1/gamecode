@@ -80,7 +80,7 @@ public class Picture {
 		}
 //		String color = JOptionPane.showInputDialog(null, "请输入色差范围0~255(建议10~50)");
 		
-		String color = "100";
+		String color = "50";
 		
 		if (isNo(color)) {
 			color_range = 255 - Integer.parseInt(color);

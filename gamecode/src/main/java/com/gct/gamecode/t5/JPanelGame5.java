@@ -62,7 +62,7 @@ public class JPanelGame5 extends JPanel {
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		this.setLayout(new BorderLayout(0, 0));
-//		this.setBackground(panelColor);
+		this.setBackground(panelColor);
 
 		this.addMouseListener(new MyMouseAdapter());
 		this.addMouseMotionListener(new MyMouseAdapter());
@@ -236,10 +236,19 @@ public class JPanelGame5 extends JPanel {
 		this.panelColor = panelColor;
 	}
 	
-	public void addMyCompent(MyCompent newCompent) {
+	/**
+	 * 相同的点，只会存在一个图像
+	 * @param newCompent
+	 */
+	public boolean addMyCompent(MyCompent newCompent) {
 		Point myPosition = newCompent.getMyPosition();
 		String key = String.format("%s+%s", myPosition.x, myPosition.y);
+		if (myCompentMap.get(key) != null) {
+			return false;
+		}
+		
 		myCompentMap.put(key, newCompent);
+		return true;
 	}
 
 	public Map<String, MyCompent> getMyCompentMap() {

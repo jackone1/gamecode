@@ -6,9 +6,9 @@ import com.gct.gamecode.t5.JPanelGame5;
 import com.gct.gamecode.t5.compent.factory.MyCompentFactory;
 import com.gct.gamecode.t5.compent.factory.impl.MyCompentFactoryImpl;
 import com.gct.gamecode.t5.compent.impl.MyFrag;
+import com.gct.gamecode.t5.compent.impl.MyFrag.EnumMyFrag;
 import com.gct.gamecode.t5.compent.impl.MyNumber;
 import com.gct.gamecode.t5.listener.Drawerable;
-import com.gct.gamecode.t5.util.ImgUtils;
 import com.gct.gamecode.util.MathUtil3;
 
 public class MyDrawerImpl implements Drawerable {
@@ -43,13 +43,34 @@ public class MyDrawerImpl implements Drawerable {
 		int shortDistance = source.getvLineDistance() > source.gethLineDistance() ? source.gethLineDistance() : source.getvLineDistance();
 		int intDiameter = Integer.valueOf(MathUtil3.div(String.valueOf(shortDistance), String.valueOf(1.618), 0));
 		
-//		showAllNumbers(source, ptY, point, intDiameter);
+		showAllNumbers(source, ptY, point, intDiameter);
 		
-		MyFrag frag = new MyFrag(point, intDiameter);
-		source.addMyCompent(frag);
+		showAllFrag(source, ptY, point, intDiameter);
 		
 		source.repaint();
 		return true;
+	}
+
+	/**
+	 * @param source
+	 * @param ptY
+	 * @param point
+	 * @param intDiameter
+	 */
+	private void showAllFrag(JPanelGame5 source, int ptY, Point point,
+			int intDiameter) {
+		Point point2 = new Point(point.x, ptY + source.gethLineDistance());
+		MyFrag frag = compentFactory.getMyFrag(EnumMyFrag.MY_FRAG, point2, intDiameter);
+		
+		Point point3 = new Point(point2.x + source.getvLineDistance(), ptY + source.gethLineDistance());
+		MyFrag frag3 = compentFactory.getMyFrag(EnumMyFrag.MY_FRAG_FLAG, point3, intDiameter);
+		
+		Point point4 = new Point(point3.x + source.getvLineDistance(), ptY + source.gethLineDistance());
+		MyFrag frag4 = compentFactory.getMyFrag(EnumMyFrag.MY_FRAG_UNSURE, point4, intDiameter);
+		
+		source.addMyCompent(frag);
+		source.addMyCompent(frag3);
+		source.addMyCompent(frag4);
 	}
 
 	/**
