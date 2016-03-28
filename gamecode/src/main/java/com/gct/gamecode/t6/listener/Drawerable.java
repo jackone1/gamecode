@@ -15,6 +15,14 @@ public interface Drawerable {
 	public boolean draw(JPanelGame6 source, Point mousePoint);
 	
 	/**
+	 * 右击
+	 * @param source
+	 * @param mousePoint
+	 * @return
+	 */
+	public boolean drawByRightClick(JPanelGame6 source, Point mousePoint);
+	
+	/**
 	 * 随mouse移动绘制
 	 * @param source
 	 * @param mousePoint

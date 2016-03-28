@@ -100,4 +100,28 @@ public class MyNumber implements MyCompent {
 	public Point getMyPosition() {
 		return this.ptCenter;
 	}
+
+	public EnumMyNumber getMyNumber() {
+		return myNumber;
+	}
+
+	public void setMyNumber(EnumMyNumber myNumber) {
+		this.myNumber = myNumber;
+	}
+
+	public Integer getIntDiameter() {
+		return intDiameter;
+	}
+
+	public void setIntDiameter(Integer intDiameter) {
+		this.intDiameter = intDiameter;
+	}
+
+	public Point getPtCenter() {
+		return ptCenter;
+	}
+
+	public void setPtCenter(Point ptCenter) {
+		this.ptCenter = ptCenter;
+	}
 }

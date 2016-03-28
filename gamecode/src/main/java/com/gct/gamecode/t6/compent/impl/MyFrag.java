@@ -85,6 +85,11 @@ public class MyFrag implements MyCompent {
 		return this.ptCenter;
 	}
 
+	public void changeMyFrag(EnumMyFrag newMyFrag) {
+		this.myFrag = newMyFrag;
+		this.img = ImgUtils.getImgByFileName(myFrag.imgName);
+	}
+	
 	public EnumMyFrag getMyFrag() {
 		return myFrag;
 	}

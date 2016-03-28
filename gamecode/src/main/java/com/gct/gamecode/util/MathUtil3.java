@@ -56,6 +56,10 @@ public class MathUtil3 {
 		BigDecimal b2 = new BigDecimal(v2);
 		return String.valueOf(b1.multiply(b2));
 	}
+	
+	public static int mul(int v1, int v2) {
+		return Integer.valueOf(mul(String.valueOf(v1), String.valueOf(v2)));
+	}
 
 	/**
 	 * 提供（相对）精确的除法运算，当发生除不尽的情况时，精确到 小数点以后10位，以后的数字四舍五入。
@@ -99,6 +103,16 @@ public class MathUtil3 {
 		BigDecimal b1 = new BigDecimal(v1);
 		BigDecimal b2 = new BigDecimal(v2);
 		return b1.divide(b2, BigDecimal.ROUND_UP).intValue();
+	}
+	
+	/**
+	 * ROUND_DOWN
+	 * @return
+	 */
+	public static int divRoundDown(int v1, int v2) {
+		BigDecimal b1 = new BigDecimal(v1);
+		BigDecimal b2 = new BigDecimal(v2);
+		return b1.divide(b2, BigDecimal.ROUND_DOWN).intValue();
 	}
 	
 	/**

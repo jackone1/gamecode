@@ -96,7 +96,6 @@ public class JPanelGame6 extends JPanel {
 			vLineDistance = Integer.valueOf(MathUtil3.div(String.valueOf((width2 - this.aroundDistance * 2)),String.valueOf(this.verticalNum - 1), 0));
 		}
 		
-		drawer.generateGameFrag(this);
 	}
 
 	/**
@@ -165,8 +164,11 @@ public class JPanelGame6 extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			super.mouseClicked(e);
 			
-			System.out.println("mouseClicked...");
-			drawer.draw(JPanelGame6.this, e.getPoint());
+			if (e.getButton() == MouseEvent.BUTTON3) {
+				drawer.drawByRightClick(JPanelGame6.this, e.getPoint());
+			} else if (e.getButton() == MouseEvent.BUTTON1) {
+				drawer.draw(JPanelGame6.this, e.getPoint());
+			}
 		}
 	}
 
@@ -246,21 +248,6 @@ public class JPanelGame6 extends JPanel {
 		this.panelColor = panelColor;
 	}
 	
-	/**
-	 * 相同的点，只会存在一个图像
-	 * @param newCompent
-	 */
-	public boolean addMyCompent(MyCompent newCompent) {
-		Point myPosition = newCompent.getMyPosition();
-		String key = String.format("%s+%s", myPosition.x, myPosition.y);
-		if (myCompentMap.get(key) != null) {
-			return false;
-		}
-		
-		myCompentMap.put(key, newCompent);
-		return true;
-	}
-
 	public Map<String, MyCompent> getMyCompentMap() {
 		return myCompentMap;
 	}
